@@ -1,0 +1,7 @@
+[2024-03-15 15:41:29,721] PC-Dell/INFO/locust.main: Run time limit set to 5 seconds
+[2024-03-15 15:41:29,721] PC-Dell/INFO/locust.main: Starting Locust 2.24.0
+[2024-03-15 15:41:29,721] PC-Dell/INFO/locust.runners: Ramping to 1 users at a rate of 1.00 per second
+[2024-03-15 15:41:29,736] PC-Dell/INFO/locust.runners: All users spawned: {"LoadTest_": 1} (1 total users)
+[2024-03-15 15:41:34,504] PC-Dell/INFO/locust.main: --run-time limit reached, shutting down
+[2024-03-15 15:41:34,645] PC-Dell/INFO/locust.main: writing html report to file: html_report.html
+[2024-03-15 15:41:34,645] PC-Dell/INFO/locust.main: Shutting down (exit code 0)
