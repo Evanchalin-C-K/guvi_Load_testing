@@ -3,18 +3,21 @@ from locust import SequentialTaskSet, HttpUser, task, events, TaskSet, constant_
 from locust.event import EventHook
 import logging
 
-# EventHook for sending notification
+# creating  event hook instance
 send_notification = EventHook()
 
 
+# Function to send notification with ID, message and additional information.,
 def notification(req_id, message="success", **kwargs):
     print("sending notification: ", message, "id: ", req_id, kwargs)
 
 
+# whenever the send_notification event is triggered,
+# the notification function will be called and executed
 send_notification.add_listener(notification)
 
 
-# Define a class for inheriting sequential task
+# Define a class for inheriting sequential task that helps to run the tasks in sequential order
 class LoadTest(SequentialTaskSet):
     wait = between(1, 2)
     url = "https://65c0f239dc74300bce8d0afe.mockapi.io/users"
@@ -68,8 +71,10 @@ class Mytask(TaskSet):
         for i in range(51, length):
             with self.client.delete(self.url + "/" + str(i), catch_response=True) as response:
                 if response.success():
+                    # Fire notification for successful deletion
                     send_notification.fire(req_id=1, message="data deleted")
                 else:
+                    # Fire notification for unsuccessful deletion
                     send_notification.fire(req_id=0, message="data not found")
                 self.interrupt()
 
